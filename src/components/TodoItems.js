@@ -4,13 +4,24 @@ import styles from "./TodoItem.module.css";
 class TodoItems extends React.Component {
   state = {
     editing: false,
-  }
+  };
 
   handleEditing = () => {
     this.setState({
-    editing: true,
-    })
+      editing: true,
+    });
+  };
+
+  handleUpdatedDone = (event) => {
+    if (event.key === "Enter") {
+      this.setState({ editing: false });
+    }
+  };
+
+  componentWillUnmount() {
+    console.log("Cleaning up...");
   }
+  
   render() {
     const completedStyle = {
       fontStyle: "italic",
@@ -46,8 +57,9 @@ class TodoItems extends React.Component {
           className={styles.textInput}
           value={title}
           onChange={(e) => {
-            console.log(e.target.value, id);
+            this.props.setUpdate(e.target.value, id);
           }}
+          onKeyDown={this.handleUpdatedDone}
         />
       </li>
     );
