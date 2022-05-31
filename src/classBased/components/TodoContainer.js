@@ -1,7 +1,7 @@
 import React from "react";
-import TodosList from './TodosList'
 import Header from "./Header";
 import InputTodo from "./InputTodo";
+import TodosList from "./TodosList";
 import { v4 as uuidv4 } from "uuid";
 
 class TodoContainer extends React.Component {
@@ -9,20 +9,20 @@ class TodoContainer extends React.Component {
     todos: [],
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.todos !== this.state.todos) {
-      const temp = JSON.stringify(this.state.todos);
-      localStorage.setItem("todos", temp);
-    }
-  }
-
   componentDidMount() {
-    const temp = localStorage.getItem("todos");
-    const loadedTodos = JSON.parse(temp);
+    let temp = localStorage.getItem("todos");
+    let loadedTodos = JSON.parse(temp);
     if (loadedTodos) {
       this.setState({
         todos: loadedTodos,
       });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todos !== this.state.todos) {
+      const temp = JSON.stringify(this.state.todos);
+      localStorage.setItem("todos", temp);
     }
   }
 
