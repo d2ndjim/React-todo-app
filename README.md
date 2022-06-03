@@ -3,7 +3,7 @@
 > This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-Click [here]() to see deployed live version
+Click [here](https://d2ndjim-todo-app.netlify.app/) to see deployed live version
 
 ### Features implemented so far are:
 
